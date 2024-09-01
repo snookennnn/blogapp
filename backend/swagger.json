@@ -1,0 +1,83 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "My Blog API",
+      "version": "1.0.0",
+      "description": "API документация для блога",
+      "contact": {
+        "name": "Your Name",
+        "email": "your-email@example.com"
+      }
+    },
+    "paths": {
+      "/posts": {
+        "get": {
+          "summary": "Получить все посты",
+          "responses": {
+            "200": {
+              "description": "Список постов",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Post"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/posts/{id}": {
+        "get": {
+          "summary": "Получить один пост",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Данные поста",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Post"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Post": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "content": {
+              "type": "string"
+            },
+            "imageUrl": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+  
